@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "969999234227",
+    "project_id": "family-7ea03",
+    "storage_bucket": "family-7ea03.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969999234227:android:2beae7f2ed91af2c422cc6",
+        "android_client_info": {
+          "package_name": "com.example.phonecoach_beta"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvqKIUS8R-BfQq8L2b54fyRRnE0DH9ppk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969999234227:android:d85cd4b13f0f2bad422cc6",
+        "android_client_info": {
+          "package_name": "com.example.register"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvqKIUS8R-BfQq8L2b54fyRRnE0DH9ppk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

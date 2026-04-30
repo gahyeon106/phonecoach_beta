@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="어떤 역할로 사용하시겠어요?"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="나중에 설정에서 변경할 수 있어요"
+        android:textSize="14sp"
+        android:textColor="#888888"
+        android:layout_marginBottom="48dp"/>
+
+    <!-- 개인 -->
+    <Button
+        android:id="@+id/btnIndividual"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="👤  개인"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- 부모 -->
+    <Button
+        android:id="@+id/btnParent"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="👨‍👩‍👧  부모"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- 자녀 -->
+    <Button
+        android:id="@+id/btnChild"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="👧  자녀"
+        android:textSize="18sp"/>
+
+</LinearLayout>
