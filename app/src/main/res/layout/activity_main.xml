@@ -3,15 +3,331 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
     android:background="#FFFFFF">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="메인화면입니다!"
-        android:textSize="24sp"
-        android:layout_marginBottom="48dp"/>
+    <!-- 컨텐츠 영역 -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- 홈 페이지 -->
+        <LinearLayout
+            android:id="@+id/layoutHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:visibility="gone">
+
+            <!-- 부모용: 자녀 버튼 목록 -->
+            <LinearLayout
+                android:id="@+id/layoutChildButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="연동된 자녀"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- 자녀 버튼들이 동적으로 여기에 추가됨 -->
+                <LinearLayout
+                    android:id="@+id/layoutChildButtonList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
+
+            </LinearLayout>
+
+            <!-- 자녀 data 표시 영역 -->
+            <ScrollView
+                android:id="@+id/scrollChildData"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvSelectedChild"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:id="@+id/tvChildDataResult"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#333333"
+                        android:padding="12dp"
+                        android:background="#F5F5F5"/>
+
+                </LinearLayout>
+            </ScrollView>
+
+            <!-- 부모 아닌 경우 or familyId 없는 경우 -->
+            <TextView
+                android:id="@+id/tvHomeDefault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="여기는 홈입니다."
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:visibility="visible"/>
+
+        </LinearLayout>
+
+        <!-- 카테고리 페이지 -->
+        <LinearLayout
+            android:id="@+id/layoutCategory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="여기는 카테고리입니다."
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <!-- 히스토리 페이지 -->
+        <LinearLayout
+            android:id="@+id/layoutHistory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="여기는 히스토리입니다."
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <!-- 피드백 페이지 -->
+        <LinearLayout
+            android:id="@+id/layoutFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="여기는 피드백입니다."
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <!-- 설정 페이지 -->
+        <ScrollView
+            android:id="@+id/layoutSettings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- 설정 제목 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="설정"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="24dp"/>
+
+                <!-- ────────── 가족 연동 섹션 ────────── -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="가족 연동"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- 현재 가족 ID 상태 -->
+                <TextView
+                    android:id="@+id/tvFamilyStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="가족 ID: 없음"
+                    android:textSize="14sp"
+                    android:textColor="#555555"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- 개인 사용자 안내 -->
+                <TextView
+                    android:id="@+id/tvIndividualMsg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="현재 개인 사용자입니다."
+                    android:textSize="14sp"
+                    android:textColor="#888888"
+                    android:visibility="gone"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- 부모용 섹션 -->
+                <LinearLayout
+                    android:id="@+id/layoutParentSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnCreateFamily"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="가족 그룹 만들기"
+                        android:layout_marginBottom="8dp"/>
+
+                    <EditText
+                        android:id="@+id/etChildId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="자녀 아이디 입력"
+                        android:layout_marginBottom="8dp"/>
+
+                    <Button
+                        android:id="@+id/btnInviteChild"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="자녀에게 초대 보내기"
+                        android:layout_marginBottom="8dp"/>
+
+                </LinearLayout>
+
+                <!-- 자녀용 섹션 -->
+                <LinearLayout
+                    android:id="@+id/layoutChildSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tvInvitation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="받은 초대 없음"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="8dp"/>
+
+                    <Button
+                        android:id="@+id/btnAcceptInvitation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="초대 수락"
+                        android:visibility="gone"
+                        android:layout_marginBottom="8dp"/>
+
+                </LinearLayout>
+
+                <!-- 구분선 -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DDDDDD"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- ────────── 로그아웃 섹션 ────────── -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="계정"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <Button
+                    android:id="@+id/btnLogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="로그아웃"
+                    android:backgroundTint="#FF4444"
+                    android:textColor="#FFFFFF"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+
+    <!-- 하단 네비게이션 바 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#F5F5F5">
+
+        <Button
+            android:id="@+id/btnNavHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="홈"
+            android:textSize="11sp"
+            style="?attr/borderlessButtonStyle"/>
+
+        <Button
+            android:id="@+id/btnNavCategory"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="카테고리"
+            android:textSize="11sp"
+            style="?attr/borderlessButtonStyle"/>
+
+        <Button
+            android:id="@+id/btnNavHistory"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="히스토리"
+            android:textSize="11sp"
+            style="?attr/borderlessButtonStyle"/>
+
+        <Button
+            android:id="@+id/btnNavFeedback"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="피드백"
+            android:textSize="11sp"
+            style="?attr/borderlessButtonStyle"/>
+
+        <Button
+            android:id="@+id/btnNavSettings"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="설정"
+            android:textSize="11sp"
+            style="?attr/borderlessButtonStyle"/>
+
+    </LinearLayout>
 
 </LinearLayout>

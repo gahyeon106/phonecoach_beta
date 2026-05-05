@@ -9,6 +9,7 @@ import com.example.phonecoach_beta.main.MainActivity
 import com.example.phonecoach_beta.util.UserSession
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.example.phonecoach_beta.family.FamilyManager
 
 class LoginActivity : AppCompatActivity() {
 
@@ -92,6 +93,9 @@ class LoginActivity : AppCompatActivity() {
                 UserSession.email = doc.getString("email") ?: ""
                 UserSession.role = doc.getString("role") ?: ""
                 UserSession.familyId = doc.getString("familyId")
+
+                val familyManager = FamilyManager(this)
+                familyManager.saveUserData()
 
                 //역할...
                 if (UserSession.role.isEmpty()) {
